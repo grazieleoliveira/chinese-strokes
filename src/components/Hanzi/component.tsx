@@ -1,26 +1,31 @@
+import {IHanziProps} from '../Hanzi/types'
 import React from 'react'
 import WebView from 'react-native-webview'
 
+export const Hanzi = ({character}: IHanziProps) => {
+  const trimmedChar = character.trim()[0]
 
-export const Hanzi: React.FC = () => {
-  const INJECTED_JAVASCRIPT = `
-    let writer = HanziWriter.create('character-target-div', '霸', {
-  });
-  writer.animateCharacter();
+  const generateInjectableJavascript = () => {
+    if (character) {
+      return `
+      <div id="character-target-div"></div>
+      <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@2.2/dist/hanzi-writer.min.js"></script>
+    <script> let writer = HanziWriter.create('character-target-div', '${trimmedChar}', {
+    });
+    writer.animateCharacter(); </script>
   `
+    }
 
-  const html = `
-    <div id="character-target-div"></div>
-    <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@2.2/dist/hanzi-writer.min.js"></script>
-    `
+    return ''
+  }
 
   return (
     <WebView
       originWhiteList={['*']}
-      source={{html}}
+      source={{html: generateInjectableJavascript()}}
       mixedContentMode="always"
-      injectedJavaScript={INJECTED_JAVASCRIPT}
     />
   )
 }
 
+// 爽 很
