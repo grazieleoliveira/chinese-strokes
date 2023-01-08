@@ -1,18 +1,19 @@
 import {Hanzi} from '../src/components/Hanzi'
 import {useState} from 'react'
-import {TextInput} from 'react-native'
 import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context'
+import { Input } from './components/Input'
 
 const App = () => {
-  const [text, onChangeText] = useState('')
-  console.log("text", text)
+  const [text, setText] = useState('')
   return (
     <SafeAreaProvider>
       <SafeAreaView style={{flex: 1}}>
-        <TextInput
-          onChangeText={onChangeText}
+        <Input
+          onChangeText={setText}
           value={text}
-          placeholder="useless placeholder"
+          placeholder="Search your character!"
+          placeholderTextColor={"grey"}
+          handleIconTouchable={() => setText('')}
         />
         <Hanzi  character={text} />
       </SafeAreaView>
