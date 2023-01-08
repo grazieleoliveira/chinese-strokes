@@ -12,7 +12,7 @@ export const InputContainer = styled.View`
     padding-right: 16px;
     background-color: white;
     border-radius: 24px;
-    border-width: 1;
+    border-width: 1px;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
