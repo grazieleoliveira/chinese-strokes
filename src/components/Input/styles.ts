@@ -8,8 +8,7 @@ export const Container = styled.View`
 
 export const InputContainer = styled.View`
   border-color: grey;
-  padding-left: 16px;
-  padding-right: 16px;
+  padding: 8px 16px;
   background-color: white;
   border-radius: 24px;
   border-width: 1px;
@@ -19,6 +18,7 @@ export const InputContainer = styled.View`
 `
 
 export const Input = styled.TextInput`
+  padding: 0;
   color: black;
 `
 
