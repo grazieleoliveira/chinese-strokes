@@ -11,9 +11,9 @@ export const Hanzi = ({character}: IHanziProps) => {
       <div id="character-target-div"></div>
       <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@2.2/dist/hanzi-writer.min.js"></script>
     <script> let writer = HanziWriter.create('character-target-div', '${trimmedChar}', {
-
+      delayBetweenLoops: 1000
     });
-    writer.animateCharacter(); </script>
+    writer.loopCharacterAnimation(); </script>
   `
     }
 
